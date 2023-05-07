@@ -16,6 +16,7 @@ export default class NegociacaoController {
 
     adiciona(): void {
         const negociacao = this.criaNegociacao();
+        // negociacao.data.setDate(10);
         this.negociacaoService.adiciona(negociacao);
         console.log(this.negociacaoService.listar());        
         this.cleanUp();
