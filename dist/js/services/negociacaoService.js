@@ -5,6 +5,7 @@ export default class NegociacaoService {
     adiciona(negociacao) {
         this.negociacoes.push(negociacao);
     }
+    // Sugar syntax
     listar() {
         return this.negociacoes;
     }
