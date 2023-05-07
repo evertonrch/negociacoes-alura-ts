@@ -1,12 +1,7 @@
 import NegociacaoService from "../services/negociacaoService.js";
+import View from "./view.js";
 
-export default class NegociacaoView {
-
-    private elemento: HTMLElement;
-
-    constructor(seletor: string) {
-        this.elemento = document.querySelector(seletor) as HTMLDivElement;
-    }
+export default class NegociacaoView extends View {
 
     template(negociacoes: NegociacaoService): string {
         return `
