@@ -19,6 +19,9 @@ export default class NegociacaoController {
         this.negociacaoView.update(this.negociacaoService);
         this.mensagemView.update("Negociação realizada com sucesso!");
         this.cleanUp();
+        setTimeout(() => {
+            document.querySelector("#mensagem-view").remove();
+        }, 4000);
     }
     criaNegociacao() {
         const data = new Date(this.inputData.value.replace(/-/g, ','));
