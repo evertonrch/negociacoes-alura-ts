@@ -1,10 +1,12 @@
 import Negociacao from "../model/negociacao.js";
+import NegociacaoService from "../services/negociacaoService.js";
 
 export default class NegociacaoController {
 
     private inputData: HTMLInputElement;
     private inputQuantidade: HTMLInputElement;
     private inputValor: HTMLInputElement;
+    private negociacaoService = new NegociacaoService();
 
     constructor() {
         this.inputData = document.querySelector("#data");
@@ -14,7 +16,8 @@ export default class NegociacaoController {
 
     adiciona(): void {
         const negociacao = this.criaNegociacao();
-        console.log(negociacao);
+        this.negociacaoService.adiciona(negociacao);
+        console.log(this.negociacaoService.listar());        
         this.cleanUp();
     }
 
