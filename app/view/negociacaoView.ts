@@ -1,7 +1,7 @@
 import NegociacaoService from "../services/negociacaoService.js";
 import View from "./view.js";
 
-export default class NegociacaoView extends View {
+export default class NegociacaoView extends View<NegociacaoService> {
 
     template(negociacoes: NegociacaoService): string {
         return `
@@ -38,9 +38,4 @@ export default class NegociacaoView extends View {
         </table>        
         `;
     }
-
-    update(negociacoes: NegociacaoService): void {
-        this.elemento.innerHTML = this.template(negociacoes);
-    }
-
 }

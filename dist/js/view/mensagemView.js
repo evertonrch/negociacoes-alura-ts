@@ -5,7 +5,4 @@ export default class MensagemView extends View {
             <p class="alert alert-success col-6 offset-3">${msg}</p>
         `;
     }
-    update(msg) {
-        this.elemento.innerHTML = this.template(msg);
-    }
 }

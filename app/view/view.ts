@@ -1,6 +1,6 @@
 import NegociacaoService from "../services/negociacaoService";
 
-export default abstract class View {
+export default abstract class View<T> {
 
     protected elemento: HTMLElement;
 
@@ -8,5 +8,9 @@ export default abstract class View {
         this.elemento = document.querySelector(seletor);
     }
 
-    abstract update(msg: string | NegociacaoService): void 
-}
+    update(model: T): void {
+        this.elemento.innerHTML = this.template(model);
+    }
+
+    abstract template(model: T): string;
+} 

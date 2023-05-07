@@ -35,7 +35,4 @@ export default class NegociacaoView extends View {
         </table>        
         `;
     }
-    update(negociacoes) {
-        this.elemento.innerHTML = this.template(negociacoes);
-    }
 }
