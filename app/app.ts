@@ -2,7 +2,7 @@ import NegociacaoController from "./controller/negociacaoController.js";
 
 
 
-const form = document.querySelector(".form");
+const form = document.querySelector(".form") as HTMLFormElement;
 form.addEventListener("submit", (event: Event) => {
     event.preventDefault();
 
