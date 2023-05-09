@@ -1,3 +1,4 @@
+import { DiasDaSemana } from "../model/enums/diasDaSemana.js";
 import Negociacao from "../model/negociacao.js";
 import NegociacaoService from "../services/negociacaoService.js";
 import MensagemView from "../view/mensagemView.js";
@@ -7,8 +8,6 @@ export default class NegociacaoController {
         this.negociacaoService = new NegociacaoService();
         this.negociacaoView = new NegociacaoView("#negociacao-view");
         this.mensagemView = new MensagemView("#mensagem-view");
-        this.SABADO = 0;
-        this.DOMINGO = 6;
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector("#valor");
@@ -38,6 +37,6 @@ export default class NegociacaoController {
         this.mensagemView.update("Negociação realizada com sucesso!");
     }
     isDiaUtil(data) {
-        return data.getDay() > this.DOMINGO && data.getDay() < this.SABADO;
+        return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.DOMINGO;
     }
 }
