@@ -15,13 +15,14 @@ export default class NegociacaoController {
     adiciona() {
         const negociacao = this.criaNegociacao();
         // negociacao.data.setDate(10);
-        this.negociacaoService.adiciona(negociacao);
-        this.negociacaoView.update(this.negociacaoService);
-        this.mensagemView.update("Negociação realizada com sucesso!");
-        this.cleanUp();
-        setTimeout(() => {
-            document.querySelector("#mensagem-view").remove();
-        }, 4000);
+        if (negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6) {
+            this.negociacaoService.adiciona(negociacao);
+            this.atualizaView();
+            this.cleanUp();
+        }
+        else {
+            this.mensagemView.update(`Negociações somente em dias válidos (${negociacao.data.getDay()})`);
+        }
     }
     criaNegociacao() {
         const data = new Date(this.inputData.value.replace(/-/g, ','));
@@ -30,5 +31,9 @@ export default class NegociacaoController {
     cleanUp() {
         this.inputData.value = this.inputQuantidade.value = this.inputValor.value = '';
         this.inputData.focus();
+    }
+    atualizaView() {
+        this.negociacaoView.update(this.negociacaoService);
+        this.mensagemView.update("Negociação realizada com sucesso!");
     }
 }

@@ -15,12 +15,7 @@ export default class NegociacaoView extends View {
             return `
                     <tr>
                         <td>
-                            ${new Intl.DateTimeFormat("pt-BR", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric"
-            })
-                .format(negociacao.data)}
+                            ${this.formatarData(negociacao.data)}
                         </td>
                         <td>
                             ${negociacao.quantidade}
@@ -34,5 +29,13 @@ export default class NegociacaoView extends View {
             </tbody>
         </table>        
         `;
+    }
+    formatarData(data) {
+        return new Intl.DateTimeFormat("pt-BR", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+        })
+            .format(data);
     }
 }

@@ -22,13 +22,17 @@ export default class NegociacaoController {
     public adiciona(): void {
         const negociacao = this.criaNegociacao();
         // negociacao.data.setDate(10);
-        this.negociacaoService.adiciona(negociacao);
-        this.atualizaView();
-        this.cleanUp();
+        if(negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6) {
+            this.negociacaoService.adiciona(negociacao);
+            this.atualizaView();
+            this.cleanUp();
+        } else {
+            this.mensagemView.update(`Negociações somente em dias válidos (${negociacao.data.getDay()})`);
+        }        
     }
 
-    private criaNegociacao(): Negociacao {
-        const data = new Date(this.inputData.value.replace(/-/g, ','));
+    public criaNegociacao(): Negociacao {
+        const data = new Date(this.inputData.value.replace(/-/g, ','));      
         return new Negociacao(data, +this.inputQuantidade.value, +this.inputValor.value);
     }
 
