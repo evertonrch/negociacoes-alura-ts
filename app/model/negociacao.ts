@@ -13,6 +13,11 @@ class Negociacao {
     public get volume(): number {
         return this.quantidade * this.valor;
     }
+
+    public static criaDe(dataStr: string, quantidadeStr: string, valorStr: string): Negociacao {
+        const data = new Date(dataStr.replace(/-/g, ','));      
+        return new Negociacao(data, +quantidadeStr, +valorStr);
+    }
 }
 
 export default Negociacao;
