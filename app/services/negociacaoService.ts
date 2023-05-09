@@ -4,12 +4,12 @@ export default class NegociacaoService {
 
     private negociacoes: Array<Negociacao> = [];
 
-    adiciona(negociacao: Negociacao): void {
+    public adiciona(negociacao: Negociacao): void {
         this.negociacoes.push(negociacao);
     }
 
     // Sugar syntax
-    listar(): readonly Negociacao[] {
+    public listar(): readonly Negociacao[] {
         return this.negociacoes;
     }
 

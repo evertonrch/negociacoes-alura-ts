@@ -3,7 +3,7 @@ import View from "./view.js";
 
 export default class NegociacaoView extends View<NegociacaoService> {
 
-    template(negociacoes: NegociacaoService): string {
+    protected template(negociacoes: NegociacaoService): string {
         return `
         <table class="table table-stripped table-hover table-bordered table-secondary">
             <thead class="text-center">
@@ -18,12 +18,7 @@ export default class NegociacaoView extends View<NegociacaoService> {
                     return `
                     <tr>
                         <td>
-                            ${new Intl.DateTimeFormat("pt-BR", {
-                                day: "2-digit",
-                                month: "2-digit",
-                                year: "numeric"
-                            })
-                            .format(negociacao.data)}
+                            ${this.formatarData(negociacao.data)}
                         </td>
                         <td>
                             ${negociacao.quantidade}
@@ -38,4 +33,13 @@ export default class NegociacaoView extends View<NegociacaoService> {
         </table>        
         `;
     }
-}
+
+    private formatarData(data: Date): string {
+        return new Intl.DateTimeFormat("pt-BR", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+        })
+        .format(data)
+    }
+ }

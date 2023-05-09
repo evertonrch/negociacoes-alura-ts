@@ -12,32 +12,33 @@ export default class NegociacaoController {
     private negociacaoView = new NegociacaoView("#negociacao-view");
     private mensagemView = new MensagemView("#mensagem-view");
 
-    constructor() {
+    public constructor() {
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector("#valor");
         this.negociacaoView.update(this.negociacaoService);
     }
 
-    adiciona(): void {
+    public adiciona(): void {
         const negociacao = this.criaNegociacao();
         // negociacao.data.setDate(10);
         this.negociacaoService.adiciona(negociacao);
-        this.negociacaoView.update(this.negociacaoService);     
-        this.mensagemView.update("Negociação realizada com sucesso!"); 
+        this.atualizaView();
         this.cleanUp();
-        setTimeout(() => {
-            document.querySelector("#mensagem-view").remove();
-        }, 4000)
     }
 
-    criaNegociacao(): Negociacao {
+    private criaNegociacao(): Negociacao {
         const data = new Date(this.inputData.value.replace(/-/g, ','));
         return new Negociacao(data, +this.inputQuantidade.value, +this.inputValor.value);
     }
 
-    cleanUp(): void {
+    private cleanUp(): void {
         this.inputData.value = this.inputQuantidade.value = this.inputValor.value = '';
         this.inputData.focus();
+    }
+
+    private atualizaView(): void {
+        this.negociacaoView.update(this.negociacaoService);     
+        this.mensagemView.update("Negociação realizada com sucesso!"); 
     }
 }
