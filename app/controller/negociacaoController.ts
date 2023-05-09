@@ -23,10 +23,7 @@ export default class NegociacaoController {
     public adiciona(): void {
         const negociacao = this.criaNegociacao();
         // negociacao.data.setDate(10);
-        if(!this.isDiaUtil(negociacao.data)) {           
-            this.mensagemView.update(`Negociações somente em dias válidos`);
-            return; // Early return
-        } 
+        this.checaDataNegociacao(negociacao);
         this.negociacaoService.adiciona(negociacao);
         this.atualizaView();
         this.cleanUp();       
@@ -49,5 +46,12 @@ export default class NegociacaoController {
 
     private isDiaUtil(data: Date): boolean {
         return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.DOMINGO;
+    }
+
+    private checaDataNegociacao(negociacao: Negociacao): void {
+        if(!this.isDiaUtil(negociacao.data)) {           
+            this.mensagemView.update(`Negociações somente em dias válidos`);
+            return; // Early return
+        } 
     }
 }
