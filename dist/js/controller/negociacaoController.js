@@ -15,10 +15,9 @@ export default class NegociacaoController {
     }
     adiciona() {
         const negociacao = Negociacao.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
-        // negociacao.data.setDate(10);
         if (!this.isDiaUtil(negociacao.data)) {
             this.mensagemView.update(`Negociações somente em dias válidos`);
-            return; // Early return
+            return;
         }
         this.negociacaoService.adiciona(negociacao);
         this.atualizaView();
