@@ -7,7 +7,7 @@ export default class NegociacaoController {
     constructor() {
         this.negociacaoService = new NegociacaoService();
         this.negociacaoView = new NegociacaoView("#negociacao-view", true);
-        this.mensagemView = new MensagemView("#mensagem-view", false);
+        this.mensagemView = new MensagemView("#mensagem-view");
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector("#valor");

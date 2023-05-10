@@ -11,7 +11,7 @@ export default class NegociacaoController {
     private inputValor: HTMLInputElement;
     private negociacaoService = new NegociacaoService();
     private negociacaoView = new NegociacaoView("#negociacao-view", true);
-    private mensagemView = new MensagemView("#mensagem-view", false);
+    private mensagemView = new MensagemView("#mensagem-view");
 
     public constructor() {
         this.inputData = document.querySelector("#data") as HTMLInputElement;
