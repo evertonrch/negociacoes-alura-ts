@@ -8,9 +8,7 @@ export default class NegociacaoService {
         this.negociacoes.push(negociacao);
     }
 
-    // Sugar syntax
     public listar(): readonly Negociacao[] {
         return this.negociacoes;
     }
-
 }

@@ -1,6 +1,5 @@
 import NegociacaoController from "./controller/negociacaoController.js";
 
-
 const negociacaoController = new NegociacaoController();
 const form = document.querySelector(".form");
 if(form) {

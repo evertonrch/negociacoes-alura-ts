@@ -25,11 +25,12 @@ export default class NegociacaoController {
             this.inputData.value,
             this.inputQuantidade.value,
             this.inputValor.value);        
-        // negociacao.data.setDate(10);
+
         if(!this.isDiaUtil(negociacao.data)) {           
             this.mensagemView.update(`Negociações somente em dias válidos`);
-            return; // Early return
+            return;
         } 
+
         this.negociacaoService.adiciona(negociacao);
         this.atualizaView();
         this.cleanUp();       
@@ -41,8 +42,16 @@ export default class NegociacaoController {
     }
 
     private atualizaView(): void {
-        this.negociacaoView.update(this.negociacaoService);     
-        this.mensagemView.update("Negociação realizada com sucesso!"); 
+        this.negociacaoView.update(this.negociacaoService);
+        this.mensagemView.update("Negociação realizada com sucesso!");
+        setTimeout(() => {
+            this.limpaMensagem()
+        }, 2000)
+    }
+
+    private limpaMensagem(): void {
+        const mensagem = document.querySelector("#mensagem-view") as HTMLDivElement
+        mensagem.innerHTML = ""
     }
 
     private isDiaUtil(data: Date): boolean {       
