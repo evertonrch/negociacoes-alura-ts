@@ -1,11 +1,14 @@
 {
     "compilerOptions": {
-        "outDir": "dist/js",
+        "outDir": "dist",
+        "rootDir": "src",
         "target": "ES6",
+        "module": "ESNext",
+        "lib": ["ES6", "DOM"],
         "noEmitOnError": true,
         "noImplicitAny": true,
         "removeComments": true,
         "strictNullChecks": true
     },
-    "include": ["app/**/*"]
+    "include": ["src/**/*"]
 }
