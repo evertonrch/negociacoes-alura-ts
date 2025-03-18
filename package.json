@@ -1,9 +1,14 @@
 {
+  "main": "index.js",
+  "author": "",
+  "description": "",
   "scripts": {
     "compile": "tsc",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "dev": "tsc -w & live-server"
   },
   "devDependencies": {
+    "live-server": "^1.2.2",
     "typescript": "^5.0.4"
   },
   "dependencies": {
