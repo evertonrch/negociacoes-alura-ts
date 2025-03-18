@@ -2,4 +2,4 @@ doc
 .doc*
 node_modules/
 .vscode
-package-lock.json
+dist/
